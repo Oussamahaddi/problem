@@ -27,3 +27,43 @@ console.log(arrayChunk(arr, n));
 ```
 
 ### Given two strings, write a method to determine if they are one edit away from each other.
+
+```
+
+let count = 0;
+let i = 0;
+let j = 0;
+
+function compare(firstStr, secondStr) {
+    let len1 = firstStr.length;
+    let len2 = secondStr.length;
+    
+    if (Math.abs(len1 - len2) > 1) {
+        return false;
+    }
+    
+    while (i < len1 && j < len2) {
+        if (firstStr[i] != secondStr[j]) {
+            if (count == 1) return false;
+            if (len1 > len2) {
+                i++;
+            } else if (len1 < len2) {
+                j++;
+            } else {
+                i++;
+                j++;
+            }
+            count++;
+        } else {
+            i++;
+            j++;
+        }
+    }
+    if (i < len1 || j < len2)
+        count++;
+}
+
+console.log(compare("pale", "pale"));
+```
+
+### Given two strings, write a method to determine if they are one edit away from each other.
